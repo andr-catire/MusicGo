@@ -80,8 +80,8 @@ o con la extensión PlantUML para VS Code.
 
 ## Datos de ejemplo
 
-`data/catalogo.json` trae 5 canciones, 3 episodios de podcast y 4 productos.
-`data/usuarios.json` trae 2 usuarios de prueba (`rocker99`, `podcastlover`).
+`data/catalogo.json` trae variedad de canciones, episodios de podcast y  productos.
+`data/usuarios.json` trae base de usuarios de prueba .
 La aplicación carga estos archivos al iniciar y los reescribe al salir.
 
 ## Notas
