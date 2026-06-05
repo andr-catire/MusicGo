@@ -8,63 +8,7 @@ con gestión de usuarios, playlists, catálogo, compras de productos especiales
 y estadísticas de escucha. La persistencia se realiza completamente en
 archivos JSON; no se requieren librerías externas.
 
-## Estructura del proyecto
 
-Directory structure:
-└── MusicGO/
-    ├── README.md
-    ├── lib/
-    │   ├── README.txt
-    │   └── .gitkeep
-    └── src/
-        └── musicgo/
-            ├── Main.java
-            ├── excepciones/
-            │   ├── ContenidoNoEncontradoException.java
-            │   ├── UsuarioNoEncontradoException.java
-            │   └── UsuarioYaExisteException.java
-            ├── interfaces/
-            │   ├── Comprable.java
-            │   ├── Identificable.java
-            │   └── Reproducible.java
-            ├── modelo/
-            │   ├── ArteVisualAlbum.java
-            │   ├── Audio.java
-            │   ├── Biblioteca.java
-            │   ├── Cancion.java
-            │   ├── Catalogo.java
-            │   ├── Compra.java
-            │   ├── EpisodioPodcast.java
-            │   ├── Estadisticas.java
-            │   ├── Mensaje.java
-            │   ├── PaqueteTopTen.java
-            │   ├── Playlist.java
-            │   ├── Producto.java
-            │   └── Usuario.java
-            ├── persistencia/
-            │   ├── JsonParser.java
-            │   ├── JsonWriter.java
-            │   └── RepositorioDatos.java
-            ├── servicios/
-            │   ├── GestorCatalogo.java
-            │   ├── GestorCompras.java
-            │   ├── GestorEstadisticas.java
-            │   ├── GestorPlaylists.java
-            │   ├── GestorReproduccion.java
-            │   └── GestorUsuarios.java
-            ├── ui/
-            │   ├── ConsolaUtil.java
-            │   ├── MenuCatalogo.java
-            │   ├── MenuCompras.java
-            │   ├── MenuEstadisticas.java
-            │   ├── MenuPlaylists.java
-            │   ├── MenuPrincipal.java
-            │   ├── MenuReproduccion.java
-            │   └── MenuUsuarios.java
-            └── util/
-                ├── GeneradorId.java
-                ├── LimpiarTerminal.java
-                └── Validadores.java
 
 
 ## Compilar
