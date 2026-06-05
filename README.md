@@ -1,10 +1,5 @@
 # 🎵 MusicGo
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/andr-catire/MusicGo?style=for-the-badge&color=8A2BE2" alt="Stars">
-  <img src="https://img.shields.io/github/forks/andr-catire/MusicGo?style=for-the-badge&color=orange" alt="Forks">
-  <img src="https://img.shields.io/github/license/andr-catire/MusicGo?style=for-the-badge&color=green" alt="License">
-</p>
 
 <p align="center">
   <strong>MusicGo</strong> es un reproductor de música moderno, rápido y ligero desarrollado en Java. Diseñado con una interfaz intuitiva para ofrecer la mejor experiencia de usuario al gestionar y escuchar tus canciones favoritas de manera local.
