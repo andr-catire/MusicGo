@@ -1,0 +1,55 @@
+[
+  {"id":"USR-001","nombre":"Andresito","correo":"admin1@gmail.com","estadisticas":{"tiempoEscuchaSegundos":25794,"cancionesEnBiblioteca":23,"comprasRealizadas":7,"reproduccionesTotales":38},"historialCompras":[{"idProducto":"PRD-001","aliasUsuario":"USR-001","montoPagado":9.99,"fecha":"2026-05-10T16:51:02.677745163"},{"idProducto":"PRD-001","aliasUsuario":"USR-001","montoPagado":9.99,"fecha":"2026-05-15T19:55:20.304012096"},{"idProducto":"PRD-002","aliasUsuario":"USR-001","montoPagado":49.99,"fecha":"2026-05-16T12:31:08.069269110"},{"idProducto":"PRD-002","aliasUsuario":"USR-001","montoPagado":49.99,"fecha":"2026-05-16T13:27:26.782679205"},{"idProducto":"PRD-002","aliasUsuario":"USR-001","montoPagado":49.99,"fecha":"2026-05-16T13:36:29.646111468"},{"idProducto":"PRD-005","aliasUsuario":"USR-001","montoPagado":19.99,"fecha":"2026-06-03T18:56:05.454834413"},{"idProducto":"PRD-004","aliasUsuario":"USR-001","montoPagado":39.99,"fecha":"2026-06-04T20:44:02.477475977"}],"biblioteca":{"playlists":[
+      {"id":"PLY-43C61A75","nombre":"AndresMusic","aliasPropietario":"Andres","contenido":[
+  {"id":"AUD-003","titulo":"Hotel California","duracionSegundos":0,"tipo":"cancion","artista":"Eagles","album":"Hotel California","genero":"Rock"},
+  {"id":"CAN-0010","titulo":"One More Time","duracionSegundos":0,"tipo":"cancion","artista":"Daft Punk","album":"Discovery","genero":"House"},
+  {"id":"AUD-008","titulo":"La revolucion del fitness","duracionSegundos":0,"tipo":"episodio","anfitrion":"Andrew Huberman","nombrePodcast":"Huberman Lab","descripcion":"Ciencia del entrenamiento y la recuperacion","numeroEpisodio":75},
+  {"id":"CAN-0558","titulo":"Robot Rock","duracionSegundos":0,"tipo":"cancion","artista":"Daft Punk","album":"Human After All","genero":"Electronic"}
+]},      {"id":"PLY-8232FF97","nombre":"Paquete top 10 Hits The Weeknd","aliasPropietario":"Andr-Catire","contenido":[
+  {"id":"CAN-0001","titulo":"Blinding Lights","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"After Hours","genero":"Synthwave"},
+  {"id":"CAN-0011","titulo":"Starboy","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"Starboy","genero":"Pop"},
+  {"id":"CAN-0012","titulo":"Save Your Tears","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"After Hours","genero":"Pop"},
+  {"id":"CAN-0013","titulo":"The Hills","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"Beauty Behind the Madness","genero":"R&B"},
+  {"id":"CAN-0014","titulo":"Can't Feel My Face","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"Beauty Behind the Madness","genero":"Pop"},
+  {"id":"CAN-0015","titulo":"Call Out My Name","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"My Dear Melancholy","genero":"R&B"},
+  {"id":"CAN-0016","titulo":"I Feel It Coming","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"Starboy","genero":"Pop"},
+  {"id":"CAN-0017","titulo":"In Your Eyes","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"After Hours","genero":"Synthpop"},
+  {"id":"CAN-0018","titulo":"Earned It","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"Fifty Shades of Grey","genero":"R&B"},
+  {"id":"CAN-0019","titulo":"Die For You","duracionSegundos":0,"tipo":"cancion","artista":"The Weeknd","album":"Starboy","genero":"R&B"}
+]},      {"id":"PLY-1DA007A5","nombre":"CatireMUsic","aliasPropietario":"Andresito","contenido":[
+
+]},      {"id":"PLY-9162083E","nombre":"Megapack Rock Argentino","aliasPropietario":"Andresito","contenido":[
+  {"id":"CAN-0005","titulo":"De Musica Ligera","duracionSegundos":212,"tipo":"cancion","artista":"Soda Stereo","album":"Cancion Animal","genero":"Rock en Español"},
+  {"id":"CAN-0050","titulo":"Seminare","duracionSegundos":212,"tipo":"cancion","artista":"Seru Giran","album":"Seru Giran","genero":"Rock en Español"},
+  {"id":"CAN-0051","titulo":"Muchacha Ojos de Papel","duracionSegundos":185,"tipo":"cancion","artista":"Almendra","album":"Almendra","genero":"Folk Rock"},
+  {"id":"CAN-0052","titulo":"Jijiji","duracionSegundos":330,"tipo":"cancion","artista":"Patricio Rey y sus Redonditos de Ricota","album":"Oktubre","genero":"Rock en Español"},
+  {"id":"CAN-0053","titulo":"El Amor Despues del Amor","duracionSegundos":310,"tipo":"cancion","artista":"Fito Paez","album":"El Amor Despues del Amor","genero":"Pop Rock"},
+  {"id":"CAN-0054","titulo":"Lamento Boliviano","duracionSegundos":221,"tipo":"cancion","artista":"Los Enanitos Verdes","album":"Big Bang","genero":"Rock en Español"},
+  {"id":"CAN-0055","titulo":"Mil Horas","duracionSegundos":170,"tipo":"cancion","artista":"Los Abuelos de la Nada","album":"Vasos y Besos","genero":"Pop Rock"},
+  {"id":"CAN-0056","titulo":"Seguir Viviendo Sin Tu Amor","duracionSegundos":175,"tipo":"cancion","artista":"Luis Alberto Spinetta","album":"Peluson of Milk","genero":"Pop Rock"},
+  {"id":"CAN-0057","titulo":"Flaca","duracionSegundos":272,"tipo":"cancion","artista":"Andres Calamaro","album":"Alta Suciedad","genero":"Pop Rock"},
+  {"id":"CAN-0058","titulo":"La Leyenda del Hada y el Mago","duracionSegundos":315,"tipo":"cancion","artista":"Rata Blanca","album":"Magos, Espadas y Rosas","genero":"Heavy Metal"}
+]}    ]}},
+  {"id":"USR-M1A2R3I4","nombre":"Maria","correo":"maria.music@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-C5A6R7L8","nombre":"Carlos","correo":"carlos99@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-L9U0C1I2","nombre":"Lucia","correo":"lucia.oyente@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-P3E4D5R6","nombre":"Pedro","correo":"pedro.rock@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-S7O8F9I0","nombre":"Sofia","correo":"sofia.pop@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-436B9A59","nombre":"Andres","correo":"andres@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-96D0B89B","nombre":"KBbe23223","correo":"negroman25@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-40CB782E","nombre":"Kbo6464","correo":"negroman@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-0D4B410A","nombre":"negrokiriku2323","correo":"negrito@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-87E12B60","nombre":"Antonella","correo":"anto2326@hotmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}},
+  {"id":"USR-07943A95","nombre":"alexandrita2526","correo":"aagonzalezalejandro26@gmail.com","estadisticas":{"tiempoEscuchaSegundos":0,"cancionesEnBiblioteca":0,"comprasRealizadas":0,"reproduccionesTotales":0},"historialCompras":[],"biblioteca":{"playlists":[
+    ]}}
+]
