@@ -78,6 +78,8 @@ public class JsonWriter {
             sb.append("\"id\":\"").append(u.getId()).append("\",");
             sb.append("\"nombre\":\"").append(u.getNombre()).append("\",");
             sb.append("\"correo\":\"").append(u.getCorreo()).append("\",");
+            sb.append("\"saldo\":").append(u.getSaldo()).append(",");
+            sb.append("\"rol\":").append(u.getRolUsuario().name()).append("\",");
 
             // Estadisticas
             sb.append("\"estadisticas\":{");

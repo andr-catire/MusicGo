@@ -29,14 +29,21 @@ public class Usuario implements Identificable {
     private Biblioteca biblioteca;
     private Estadisticas estadisticas;
     private List<Compra> historialCompras;
+    private RolUsuario rol;
+    private double  saldo;
+    public  enum  RolUsuario {
+        ADMINISTRADOR , NORMAL
+    }
 
-    public Usuario(String nombre, String correo) {
+    public Usuario(String nombre, String correo ) {
         this.id = GeneradorId.generarId("USR");
         this.nombre = nombre;
         this.correo = correo;
         this.biblioteca = new Biblioteca();
         this.estadisticas = new Estadisticas();
         this.historialCompras = new ArrayList<>();
+        this.rol =  RolUsuario.NORMAL;
+        this.saldo=0.0;
     }
 
     /**
@@ -44,13 +51,15 @@ public class Usuario implements Identificable {
      * sus datos ya completos.
      */
     public Usuario(String id, String nombre, String correo, Biblioteca biblioteca,
-                   Estadisticas estadisticas, List<Compra> historialCompras) {
+                   Estadisticas estadisticas, List<Compra> historialCompras , RolUsuario rol ,double saldo) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
         this.biblioteca = (biblioteca != null) ? biblioteca : new Biblioteca();
         this.estadisticas = (estadisticas != null) ? estadisticas : new Estadisticas();
         this.historialCompras = (historialCompras != null) ? historialCompras : new ArrayList<>();
+        this.rol = rol;
+        this.saldo = saldo;
     }
 
     /**
@@ -89,6 +98,14 @@ public class Usuario implements Identificable {
         this.correo = correo;
     }
 
+    public RolUsuario getRolUsuario(){ return rol; }
+
+    public void  setRolUsuario(RolUsuario rol){this.rol = rol; }
+
+    public double getSaldo(){return saldo;}
+
+    public void setSAldo( double saldo){this.saldo = saldo;}
+
     /**
      * Agrega una compra al historial y actualiza las estadisticas.
      */
@@ -113,5 +130,13 @@ public class Usuario implements Identificable {
         return "Usuario{id='" + id + "', nombre='" + nombre + "', correo='" + correo
                 + "', playlists=" + (biblioteca != null ? biblioteca.cantidadPlaylists() : 0)
                 + ", compras=" + historialCompras.size() + "}";
+    }
+
+    public void descontarSaldo(double precio ){
+        this.saldo= saldo-precio;
+    }
+
+    public void recargarSaldo (double monto){
+        this.saldo =monto + saldo;
     }
 }

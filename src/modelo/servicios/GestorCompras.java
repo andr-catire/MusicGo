@@ -2,10 +2,10 @@ package modelo.servicios;
 
 import modelo.entidades.*;
 import modelo.persistencia.RepositorioDatos;
+import excepciones.SaldoInsuficienteException;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import util.GeneradorId;
 
 /**
  * Coordina la adquisicion de productos por parte de los usuarios, gestionando
@@ -35,27 +35,29 @@ public class GestorCompras {
     /**
      * Procesa la compra de un producto validando existencias y persistiendo cambios.
      */
-    public boolean comprarProducto(String idUsuarioOAlias, String idProductoONombre) {
+    /**
+     * Procesa la compra. Lanza SaldoInsuficienteException si el usuario no tiene fondos.
+     */
+    public void comprarProducto(String idUsuarioOAlias, String idProductoONombre) throws SaldoInsuficienteException {
         Usuario usuario = gestorUsuarios.buscarPorIdOAlias(idUsuarioOAlias);
         if (usuario == null) {
             System.err.println("Error: El usuario '" + idUsuarioOAlias + "' no existe.");
-            return false;
+            return;
         }
 
-        Producto producto = null;
-        for (Producto p : gestorCatalogo.getTodosLosProductos()) {
-            if (p.getId().equalsIgnoreCase(idProductoONombre) || p.getNombre().equalsIgnoreCase(idProductoONombre)) {
-                producto = p;
-                break;
-            }
-        }
-
+        Producto producto = gestorCatalogo.buscarProductoPorIdONombre(idProductoONombre);
         if (producto == null) {
             System.err.println("Error: El producto '" + idProductoONombre + "' no existe.");
-            return false;
+            return;
         }
 
-        Compra nuevaCompra = new Compra(producto.getId(), usuario.getId(), producto.getPrecio(), LocalDateTime.now());
+        if (usuario.getSaldo() < producto.getPrecio()) {
+
+            throw new SaldoInsuficienteException("Saldo insuficiente para comprar " + producto.getNombre() + ". Tienes: $" + usuario.getSaldo() + ", Cuesta: $" + producto.getPrecio());
+        }
+
+        usuario.descontarSaldo(producto.getPrecio());
+        Compra nuevaCompra = new Compra(producto.getId(), usuario.getNombre(), producto.getPrecio(), LocalDateTime.now());
         usuario.registrarCompra(nuevaCompra);
 
         if (producto instanceof modelo.entidades.PaqueteTopTen) {
@@ -69,18 +71,15 @@ public class GestorCompras {
                 }
             }
             usuario.getBiblioteca().getPlaylists().add(nuevaPlaylist);
-
             System.out.println(" > [Sistema] Se ha creado tu nueva playlist: '" + paquete.getNombre() + "' con " + nuevaPlaylist.getContenido().size() + " canciones.");
         }
 
         System.out.println("\n--- COMPRA EXITOSA ---");
-        System.out.println("Usuario: " + usuario.getNombre());
-        System.out.println("Producto: " + producto.getNombre());
+        System.out.println("Has comprado: " + producto.getNombre());
+        System.out.println("Saldo restante: $" + usuario.getSaldo());
         System.out.println("----------------------\n");
 
         gestorUsuarios.guardarCambios();
-
-        return true;
     }
 
     /**

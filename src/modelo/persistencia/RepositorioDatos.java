@@ -20,6 +20,8 @@ public class RepositorioDatos {
     private static final String ARCHIVO_CATALOGO = DIRECTORIO_DATOS + "catalogo.json";
     private static final String ARCHIVO_PRODUCTOS = DIRECTORIO_DATOS + "productos.json";
     private static final String ARCHIVO_USUARIOS = DIRECTORIO_DATOS + "usuarios.json";
+    private static final String ARCHIVO_ADMINISTRADORES = DIRECTORIO_DATOS + "administradores.json";
+
 
     // Herramientas para convertir de Texto a Objeto (Parser) y de Objeto a Texto (Writer)
     private final JsonParser parser;
@@ -51,6 +53,7 @@ public class RepositorioDatos {
 
     /**
      * Lee el archivo 'canciones.json' y lo convierte en una lista de objetos Audio.
+     *
      * @return Una lista de canciones cargadas o una lista vacía si el archivo no existe.
      */
     public List<Audio> cargarAudios() {
@@ -71,6 +74,7 @@ public class RepositorioDatos {
 
     /**
      * Lee el archivo 'catalogo.json' (que contiene tanto canciones como podcasts).
+     *
      * @return Lista de audios del catálogo global.
      */
     public List<Audio> cargarCatalogo() {
@@ -92,6 +96,7 @@ public class RepositorioDatos {
 
     /**
      * Lee el archivo 'productos.json' para obtener los items de la tienda (artes, pases VIP, etc).
+     *
      * @return Lista de productos disponibles para la compra.
      */
     public List<Producto> cargarProductos() {
@@ -110,6 +115,7 @@ public class RepositorioDatos {
 
     /**
      * Recupera la base de datos de usuarios, incluyendo sus bibliotecas y estadísticas.
+     *
      * @return Lista de usuarios registrados.
      */
     public List<Usuario> cargarUsuarios() {
@@ -126,15 +132,43 @@ public class RepositorioDatos {
         }
     }
 
+    public List<Usuario> cargarAdministradores(){
+        Path path = Paths.get(ARCHIVO_ADMINISTRADORES);
+        if (!Files.exists(path)) return new ArrayList<>();
+
+        try {
+            String contenido = Files.readString(path);
+            if (contenido.isBlank()) return new ArrayList<>();
+            return parser.parsearUsuarios(contenido);
+        } catch (Exception e) {
+            System.err.println("Error al cargar usuarios: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
     /**
      * Guarda la lista actual de usuarios en el archivo 'usuarios.json'.
      * Este método se debe llamar cada vez que un usuario compra algo o crea una playlist.
+     *
      * @param usuarios La lista de usuarios con los datos actualizados que queremos salvar.
      */
     public void guardarUsuarios(List<Usuario> usuarios) {
         Path path = Paths.get(ARCHIVO_USUARIOS);
         try {
             String json = writer.crearJsonUsuarios(usuarios);
+            Files.writeString(path, json);
+        } catch (Exception e) {
+            System.err.println("Error al intentar guardar los usuarios: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Guarda la lista actual de usuarios con el rol administrador en el archivo 'administradores.json'.
+     * @param usuarios La lista de usuarios con los datos actualizados que queremos salvar.
+     */
+    public void guardarAdmin(List<Usuario> administradores) {
+        Path path = Paths.get(ARCHIVO_ADMINISTRADORES);
+        try {
+            String json = writer.crearJsonUsuarios(administradores);
             Files.writeString(path, json);
         } catch (Exception e) {
             System.err.println("Error al intentar guardar los usuarios: " + e.getMessage());

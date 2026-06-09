@@ -106,6 +106,10 @@ public class JsonParser {
             String id = extraerString(obj, "id");
             String nombre = extraerString(obj, "nombre");
             String correo = extraerString(obj, "correo");
+            String rol = extraerString(obj , "rol" );
+            Usuario.RolUsuario rolEnum = Usuario.RolUsuario.valueOf(rol.toUpperCase());
+            double saldo= extraerDouble(obj ,"saldo");
+
 
             String st = extraerBloque(obj, "estadisticas", '{', '}');
             Estadisticas estadisticas = new Estadisticas(
@@ -135,7 +139,7 @@ public class JsonParser {
                 biblioteca.agregarPlaylist(playlist);
             }
 
-            lista.add(new Usuario(id, nombre, correo, biblioteca, estadisticas, historial));
+            lista.add(new Usuario(id, nombre, correo, biblioteca, estadisticas, historial,  rolEnum , saldo));
         }
         return lista;
     }
