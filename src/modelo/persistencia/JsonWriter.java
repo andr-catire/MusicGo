@@ -14,7 +14,8 @@ public class JsonWriter {
             sb.append("\"id\":\"").append(a.getId()).append("\",");
             sb.append("\"titulo\":\"").append(a.getTitulo()).append("\",");
             sb.append("\"duracionSegundos\":").append(a.getDuracionSegundos()).append(",");
-            sb.append("\"tipo\":\"").append(a.getTipo()).append("\"");
+            sb.append("\"tipo\":\"").append(a.getTipo()).append("\",");
+            sb.append("\"categoria\":\"").append(a.getCategoria().name()).append("\"");
 
             if (a instanceof Cancion) {
                 Cancion c = (Cancion) a;
@@ -79,7 +80,9 @@ public class JsonWriter {
             sb.append("\"nombre\":\"").append(u.getNombre()).append("\",");
             sb.append("\"correo\":\"").append(u.getCorreo()).append("\",");
             sb.append("\"saldo\":").append(u.getSaldo()).append(",");
-            sb.append("\"rol\":").append(u.getRolUsuario().name()).append("\",");
+            sb.append("\"rol\":\"").append(u.getRolUsuario().name()).append("\",");
+            sb.append("\"controlParental\":\"").append(u.isControlParental()).append("\",");
+            sb.append("\"edad\":").append(u.getEdad()).append(",");
 
             // Estadisticas
             sb.append("\"estadisticas\":{");

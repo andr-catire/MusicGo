@@ -18,6 +18,10 @@ public abstract class Audio implements Reproducible, Identificable {
     protected String id;
     protected String titulo;
     protected int duracionSegundos;
+    private Clasificacion  categoria;
+    public  enum Clasificacion {
+        PUBLICO , MAYOR
+    }
 
     /**
      * Constructor para RECONSTRUIR un audio existente (ej. desde JSON).
@@ -27,10 +31,11 @@ public abstract class Audio implements Reproducible, Identificable {
      * @param titulo titulo del audio
      * @param duracionSegundos duracion en segundos
      */
-    protected Audio(String id, String titulo, int duracionSegundos) {
+    protected Audio(String id, String titulo, int duracionSegundos, Clasificacion categoria ) {
         this.id = (id == null || id.isBlank()) ? GeneradorId.generarId("AUD") : id;
         this.titulo = titulo;
         setDuracionSegundos(duracionSegundos);
+        this.categoria = (categoria != null) ? categoria : Clasificacion.PUBLICO;
     }
 
     /**
@@ -40,8 +45,8 @@ public abstract class Audio implements Reproducible, Identificable {
      * @param titulo titulo del audio
      * @param duracionSegundos duracion en segundos
      */
-    protected Audio(String titulo, int duracionSegundos) {
-        this(GeneradorId.generarId("AUD"), titulo, duracionSegundos);
+    protected Audio(String titulo, int duracionSegundos, Clasificacion  categoria) {
+        this(GeneradorId.generarId("AUD"), titulo, duracionSegundos , categoria  );
     }
 
     @Override
@@ -62,6 +67,10 @@ public abstract class Audio implements Reproducible, Identificable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public void setCategoria(Clasificacion  categoria){this.categoria  = categoria;}
+
+    public Clasificacion  getCategoria(){return categoria; }
 
     /**
      * Actualiza la duracion validando que sea un valor positivo.

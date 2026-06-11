@@ -5,6 +5,7 @@ import modelo.entidades.Playlist;
 import modelo.entidades.Usuario;
 import modelo.entidades.Mensaje;
 import excepciones.ContenidoNoEncontradoException;
+import excepciones.ContenidoRestringidoException;
 
 /**
  * Coordina la reproduccion de contenidos y la actualizacion
@@ -120,11 +121,18 @@ public class GestorReproduccion {
             throw new ContenidoNoEncontradoException("El contenido '" + idAudioOTitulo + "' no existe en el catalogo.");
         }
 
+        if (audioEncontrado.getCategoria() == Audio.Clasificacion.MAYOR) {
+            if (usuario.isControlParental() || usuario.getEdad() < 18) {
+                throw new ContenidoRestringidoException("Acceso denegado: El contenido '" + audioEncontrado.getTitulo() +
+                        "    ' es para mayores de edad y tu cuenta tiene restricciones (Edad: " + usuario.getEdad() + ").");
+            }
+        }
         audioEncontrado.reproducir();
         usuario.getEstadisticas().sumarTiempoEscucha(audioEncontrado.getDuracionSegundos());
 
         gestorUsuarios.guardarCambios();
-        return new Mensaje("Sistema", usuario.getNombre(), Mensaje.Tipo.CONFIRMACION, "▶ Reproduciendo con exito: " + audioEncontrado.getTitulo());}
+        return new Mensaje("Sistema", usuario.getNombre(), Mensaje.Tipo.CONFIRMACION, "▶ Reproduciendo con exito: " + audioEncontrado.getTitulo());
+    }
 
     public java.util.List<Audio> getTodosLosAudios() {
         return gestorCatalogo.getTodosLosAudios();

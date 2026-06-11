@@ -22,8 +22,8 @@ public class EpisodioPodcast extends Audio {
      */
     public EpisodioPodcast(String id, String titulo, int duracionSegundos,
                            String anfitrion, String nombrePodcast,
-                           String descripcion, int numeroEpisodio) {
-        super(id, titulo, duracionSegundos);
+                           String descripcion, int numeroEpisodio, Clasificacion  categoria ) {
+        super(id, titulo, duracionSegundos, categoria );
         this.anfitrion = anfitrion;
         this.nombrePodcast = nombrePodcast;
         this.descripcion = descripcion;
@@ -36,8 +36,8 @@ public class EpisodioPodcast extends Audio {
      */
     public EpisodioPodcast(String titulo, int duracionSegundos,
                            String anfitrion, String nombrePodcast,
-                           String descripcion, int numeroEpisodio) {
-        super(titulo, duracionSegundos);
+                           String descripcion, int numeroEpisodio, Clasificacion categoria ) {
+        super(titulo, duracionSegundos, categoria);
         this.anfitrion = anfitrion;
         this.nombrePodcast = nombrePodcast;
         this.descripcion = descripcion;

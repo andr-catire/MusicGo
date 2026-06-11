@@ -31,11 +31,13 @@ public class Usuario implements Identificable {
     private List<Compra> historialCompras;
     private RolUsuario rol;
     private double  saldo;
+    private boolean controlParental;
+    private int edad;
     public  enum  RolUsuario {
         ADMINISTRADOR , NORMAL
     }
 
-    public Usuario(String nombre, String correo ) {
+    public Usuario(String nombre, String correo , int edad ) {
         this.id = GeneradorId.generarId("USR");
         this.nombre = nombre;
         this.correo = correo;
@@ -44,6 +46,8 @@ public class Usuario implements Identificable {
         this.historialCompras = new ArrayList<>();
         this.rol =  RolUsuario.NORMAL;
         this.saldo=0.0;
+        this.controlParental =false;
+        this.edad = edad;
     }
 
     /**
@@ -51,7 +55,7 @@ public class Usuario implements Identificable {
      * sus datos ya completos.
      */
     public Usuario(String id, String nombre, String correo, Biblioteca biblioteca,
-                   Estadisticas estadisticas, List<Compra> historialCompras , RolUsuario rol ,double saldo) {
+                   Estadisticas estadisticas, List<Compra> historialCompras , RolUsuario rol ,double saldo ,boolean ControlParental, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
@@ -60,6 +64,8 @@ public class Usuario implements Identificable {
         this.historialCompras = (historialCompras != null) ? historialCompras : new ArrayList<>();
         this.rol = rol;
         this.saldo = saldo;
+        this.controlParental = ControlParental;
+        this.edad= edad;
     }
 
     /**
@@ -104,7 +110,20 @@ public class Usuario implements Identificable {
 
     public double getSaldo(){return saldo;}
 
-    public void setSAldo( double saldo){this.saldo = saldo;}
+    public void setSaldo( double saldo){this.saldo = saldo;}
+
+
+    public void setControlParental(boolean ControlParental){this.controlParental = ControlParental;}
+
+    public boolean isControlParental(){return controlParental;}
+
+    public int getEdad(){return edad;}
+    public void setEdad(int edad) {
+        this.edad = edad;
+        if (edad < 18) {
+            this.controlParental = true;
+        }
+    }
 
     /**
      * Agrega una compra al historial y actualiza las estadisticas.

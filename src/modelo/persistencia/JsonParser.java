@@ -33,6 +33,11 @@ public class JsonParser {
 
         for (String obj : objetos) {
             String tipo = extraerString(obj, "tipo");
+            String categoriastr = extraerString(obj, "categoria");
+            Audio.Clasificacion categoria = Audio.Clasificacion.PUBLICO;
+            if (categoriastr.equalsIgnoreCase("MAYOR")) {
+                categoria = Audio.Clasificacion.MAYOR;
+            }
             if (tipo.equalsIgnoreCase("cancion")) {
                 lista.add(new Cancion(
                         extraerString(obj, "id"),
@@ -40,7 +45,9 @@ public class JsonParser {
                         extraerInt(obj, "duracion"),
                         extraerString(obj, "artista"),
                         extraerString(obj, "album"),
-                        extraerString(obj, "genero")
+                        extraerString(obj, "genero"),
+                        categoria
+
                 ));
             } else if (tipo.equalsIgnoreCase("episodio")) {
                 lista.add(new EpisodioPodcast(
@@ -50,7 +57,8 @@ public class JsonParser {
                         extraerString(obj, "anfitrion"),
                         extraerString(obj, "nombrePodcast"),
                         extraerString(obj, "descripcion"),
-                        extraerInt(obj, "numeroEpisodio")
+                        extraerInt(obj, "numeroEpisodio"),
+                        categoria
                 ));
             }
         }
@@ -66,6 +74,8 @@ public class JsonParser {
 
         for (String obj : objetos) {
             String tipo = extraerString(obj, "tipo");
+            String categorias = extraerString(obj , "categoria");
+            Audio.Clasificacion categoria = Audio.Clasificacion.valueOf(categorias.toUpperCase());
             if (tipo.equalsIgnoreCase("arte_visual")) {
                 lista.add(new ArteVisualAlbum(
                         extraerString(obj, "id"),
@@ -106,9 +116,16 @@ public class JsonParser {
             String id = extraerString(obj, "id");
             String nombre = extraerString(obj, "nombre");
             String correo = extraerString(obj, "correo");
-            String rol = extraerString(obj , "rol" );
-            Usuario.RolUsuario rolEnum = Usuario.RolUsuario.valueOf(rol.toUpperCase());
+            String rolStr = extraerString(obj, "rol");
+            Usuario.RolUsuario rol = Usuario.RolUsuario.NORMAL;
+            if (rolStr.equalsIgnoreCase("ADMINISTRADOR")) {
+                rol = Usuario.RolUsuario.ADMINISTRADOR;
+            }
             double saldo= extraerDouble(obj ,"saldo");
+            boolean controParental = extraerBoolean(obj , "controlParental");
+            int edad= extraerInt(obj, "edad");
+
+
 
 
             String st = extraerBloque(obj, "estadisticas", '{', '}');
@@ -139,7 +156,7 @@ public class JsonParser {
                 biblioteca.agregarPlaylist(playlist);
             }
 
-            lista.add(new Usuario(id, nombre, correo, biblioteca, estadisticas, historial,  rolEnum , saldo));
+            lista.add(new Usuario(id, nombre, correo, biblioteca, estadisticas, historial,  rol , saldo , controParental ,edad));
         }
         return lista;
     }
@@ -285,5 +302,36 @@ public class JsonParser {
             }
         }
         return cadenas;
+    }
+    /**
+     * Busca una clave en un bloque JSON y extrae su valor booleano.
+     * Si no encuentra la clave o hay un error, devuelve false por defecto.
+     */
+    private boolean extraerBoolean(String json, String clave) {
+        String patron = "\"" + clave + "\":";
+        int inicio = json.indexOf(patron);
+
+        if (inicio == -1) {
+            return false;
+        }
+        inicio += patron.length();
+        int finComa = json.indexOf(",", inicio);
+        int finLlave = json.indexOf("}", inicio);
+
+        int fin;
+        if (finComa != -1 && finLlave != -1) {
+            fin = Math.min(finComa, finLlave);
+        } else if (finComa != -1) {
+            fin = finComa;
+        } else if (finLlave != -1) {
+            fin = finLlave;
+        } else {
+            fin = json.length();
+        }
+
+        String valorStr = json.substring(inicio, fin).trim();
+
+        valorStr = valorStr.replace("\"", "");
+        return Boolean.parseBoolean(valorStr);
     }
 }

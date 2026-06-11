@@ -19,8 +19,8 @@ public class Cancion extends Audio {
      * Se usa cuando ya tenemos un ID asignado.
      */
     public Cancion(String id, String titulo, int duracionSegundos,
-                   String artista, String album, String genero) {
-        super(id, titulo, duracionSegundos);
+                   String artista, String album, String genero , Clasificacion  categoria ) {
+        super(id, titulo, duracionSegundos , categoria );
         this.artista = artista;
         this.album = album;
         this.genero = genero;
@@ -31,8 +31,8 @@ public class Cancion extends Audio {
      * El ID se genera automaticamente a traves de la clase padre.
      */
     public Cancion(String titulo, int duracionSegundos,
-                   String artista, String album, String genero) {
-        super(titulo, duracionSegundos);
+                   String artista, String album, String genero , Clasificacion categoria  ) {
+        super(titulo, duracionSegundos, categoria);
         this.artista = artista;
         this.album = album;
         this.genero = genero;

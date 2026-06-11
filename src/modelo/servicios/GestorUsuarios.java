@@ -5,6 +5,8 @@ import excepciones.UsuarioYaExisteException;
 import modelo.entidades.Usuario;
 import modelo.persistencia.RepositorioDatos;
 import excepciones.GmailInvalidoException;
+import  excepciones.RecargaSaldoException;
+import excepciones.EdadValidaException;
 
 import util.Validadores;
 
@@ -37,7 +39,7 @@ public class GestorUsuarios {
         return null;
     }
 
-    public void registrar(String alias, String correo) throws UsuarioYaExisteException {
+    public void registrar(String alias, String correo, int edad ) throws UsuarioYaExisteException {
 
         if (buscarPorIdOAlias(alias) != null) {
 
@@ -61,8 +63,10 @@ public class GestorUsuarios {
             throw  new UsuarioYaExisteException("El correo "+ correo + " ya se encuentra registrado");
 
         }
-
-        Usuario nuevo = new Usuario(alias, correo);
+        if if (edad <= 0 || edad > 120){
+            throw new EdadValidaException("Ingrese una edad Valida.");
+        }
+        Usuario nuevo = new Usuario(alias, correo, edad);
 
         usuarios.add(nuevo);
 
@@ -99,7 +103,27 @@ public class GestorUsuarios {
         guardarCambios();
     }
 
+    /**
+     * Cambia el estado del control parental del usuario y guarda los cambios en disco.
+     * * @param usuarioActivo El usuario que ha iniciado sesión.
+     * @param activar true para encender el control parental, false para apagarlo.
+     */
+    public void configurarControlParental(Usuario usuarioActivo, boolean activar) {
+        if (usuarioActivo != null) {
+            usuarioActivo.setControlParental(activar);
+            guardarCambios();;
+        }
+    }
+    public void gestionarRecargaSaldo(Usuario usuarioActivo , double recarga){
+        if(recarga<=0){
+            throw  new RecargaSaldoException("Saldo invalido. Debe ser mayor a 0 ");
+        }
+        usuarioActivo.recargarSaldo( recarga);
+        guardarCambios();
+    }
+
     public void guardarCambios() {
         repositorio.guardarUsuarios(this.usuarios);
     }
+
 }
