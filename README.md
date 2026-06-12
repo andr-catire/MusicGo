@@ -3,6 +3,7 @@
 
 <p align="center">
   <strong>MusicGo</strong> es un reproductor de música moderno, rápido y ligero desarrollado en Java. Diseñado con una interfaz intuitiva para ofrecer la mejor experiencia de usuario al gestionar y escuchar tus canciones favoritas de manera local.
+  autor: Andres,  Marcel ,Miguel
 </p>
 
 ---
